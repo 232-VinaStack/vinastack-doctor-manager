@@ -4,21 +4,29 @@ import {
   Button,
   Flex,
   HStack,
-  Link, Stack, Text, useColorMode, useColorModeValue
+  Link,
+  Stack,
+  Text,
+  useColorMode,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import {
   ArgonLogoDark,
   ArgonLogoLight,
-  ChakraLogoBlue, ChakraLogoDark,
-  ChakraLogoLight, DocumentIcon,
+  ChakraLogoBlue,
+  ChakraLogoDark,
+  ChakraLogoLight,
+  DocumentIcon,
   HomeIcon,
   PersonIcon,
-  RocketIcon
+  RocketIcon,
 } from "components/Icons/Icons";
 import { SidebarResponsive } from "components/Sidebar/Sidebar";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import routes from "routes.js";
+import LogoImg from "./../../assets/img/logo.jpg";
+
 export default function AuthNavbar(props) {
   const { logo, logoText, secondary, ...rest } = props;
   const { colorMode } = useColorMode();
@@ -49,12 +57,11 @@ export default function AuthNavbar(props) {
       color={mainText}
     >
       <Stack direction="row" spacing="12px" align="center" justify="center">
-        <ArgonLogoLight w="74px" h="27px" />
-        <Box w="1px" h="20px" bg={"white"} />
-        <ChakraLogoBlue w="82px" h="21px" />
+        <img src={LogoImg} width={27} height={27} alt="logo" />
+        <Box w="1px" h="20px" />
       </Stack>
       <Text fontsize="sm" mt="3px">
-        {logoText}
+        VinaStack
       </Text>
     </Link>
   );
@@ -152,33 +159,8 @@ export default function AuthNavbar(props) {
         >
           <SidebarResponsive
             hamburgerColor={hamburgerColor}
-            logoText={props.logoText}
             secondary={props.secondary}
             routes={routes}
-            logo={
-              <Stack
-                direction="row"
-                spacing="12px"
-                align="center"
-                justify="center"
-              >
-                {colorMode === "dark" ? (
-                  <ArgonLogoLight w="74px" h="27px" />
-                ) : (
-                  <ArgonLogoDark w="74px" h="27px" />
-                )}
-                <Box
-                  w="1px"
-                  h="20px"
-                  bg={colorMode === "dark" ? "white" : "gray.700"}
-                />
-                {colorMode === "dark" ? (
-                  <ChakraLogoLight w="82px" h="21px" />
-                ) : (
-                  <ChakraLogoDark w="82px" h="21px" />
-                )}
-              </Stack>
-            }
             {...rest}
           />
         </Box>

@@ -5,6 +5,7 @@ import {
   Stack,
   Box,
   useColorMode,
+  Text,
 } from "@chakra-ui/react";
 import Configurator from "components/Configurator/Configurator";
 import Footer from "components/Footer/Footer.js";
@@ -27,6 +28,7 @@ import MainPanel from "../components/Layout/MainPanel";
 import PanelContainer from "../components/Layout/PanelContainer";
 import PanelContent from "../components/Layout/PanelContent";
 import bgAdmin from "assets/img/admin-background.png";
+import LogoImg from "assets/img/logo.jpg";
 
 export default function Dashboard(props) {
   const { ...rest } = props;
@@ -108,43 +110,44 @@ export default function Dashboard(props) {
   return (
     <Box>
       <Box
-        minH='40vh'
-        w='100%'
-        position='absolute'
+        minH="40vh"
+        w="100%"
+        position="absolute"
         bgImage={colorMode === "light" ? bgAdmin : "none"}
         bg={colorMode === "light" ? bgAdmin : "navy.900"}
-        bgSize='cover'
-        top='0'
+        bgSize="cover"
+        top="0"
       />
       <Sidebar
         routes={routes}
         logo={
-          <Stack direction='row' spacing='12px' align='center' justify='center'>
-            {colorMode === "dark" ? (
-              <ArgonLogoLight w='74px' h='27px' />
-            ) : (
-              <ArgonLogoDark w='74px' h='27px' />
-            )}
+          <Stack direction="row" spacing="12px" align="center" justify="center">
+            <img src={LogoImg} width={40} height={40} alt="logo" />
             <Box
-              w='1px'
-              h='20px'
+              w="1px"
+              h="20px"
               bg={colorMode === "dark" ? "white" : "gray.700"}
             />
-            {colorMode === "dark" ? (
-              <ChakraLogoLight w='82px' h='21px' />
-            ) : (
-              <ChakraLogoDark w='82px' h='21px' />
-            )}
+
+            <Text
+              fontsize="sm"
+              mt="3px"
+              fontWeight={"semibold"}
+              color={colorMode == "dark" ? "white" : "blackAlpha200"}
+            >
+              VinaStack
+            </Text>
           </Stack>
         }
-        display='none'
+        display="none"
         {...rest}
       />
       <MainPanel
         w={{
           base: "100%",
           xl: "calc(100% - 275px)",
-        }}>
+        }}
+      >
         <Portal>
           <AdminNavbar
             onOpen={onOpen}
@@ -159,7 +162,7 @@ export default function Dashboard(props) {
             <PanelContainer>
               <Switch>
                 {getRoutes(routes)}
-                <Redirect from='/admin' to='/admin/dashboard' />
+                <Redirect from="/admin" to="/admin/dashboard" />
               </Switch>
             </PanelContainer>
           </PanelContent>

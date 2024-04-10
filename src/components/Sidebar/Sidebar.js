@@ -255,7 +255,6 @@ function Sidebar(props) {
             <Stack direction="column" mb="40px">
               <Box>{links}</Box>
             </Stack>
-            <SidebarHelp sidebarVariant={sidebarVariant} />
           </Scrollbars>
         </Box>
       </Box>
@@ -363,7 +362,7 @@ export function SidebarResponsive(props) {
                     w="30px"
                     me="12px"
                   >
-                    {prop.icon}
+                    {prop.icon} 
                   </IconBox>
                 )}
                 <Text color={activeColor} my="auto" fontSize="sm">
