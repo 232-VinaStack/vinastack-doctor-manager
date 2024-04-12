@@ -1,50 +1,71 @@
 export const tablesTableData = [
   {
-    name: "Esthera Jackson",
-    phone: "alexa@simmmple.com",
-    subdomain: "Sick, Throat, Headache",
-    domain: "Fever",
-    status: "Today",
-    date: "14/06/21 07:00:00",
+    id: 1,
+    user_name: "Tran Thi B",
+    user_phone: "0123456790",
+    clinic: "Clinic B",
+    start_time: "2024-04-11 09:00:00",
+    doctor_id: {
+      id: 2,
+      name: "Dr. B",
+      avatarLink: "link_to_avatar_2",
+      expYear: 8,
+      education: "MD"
+    },
+    symptoms: [
+      {
+        id: 2,
+        name: "Fever"
+      },
+      {
+        id: 3,
+        name: "Sick"
+      }
+    ]
   },
   {
-    name: "Alexa Liras",
-    phone: "laurent@simmmple.com",
-    subdomain: "Sick, Throat, Headache",
-    domain: "Fever",
-    status: "Incomming",
-    date: "12/05/21 07:00:00",
+    id: 2,
+    user_name: "Tran Thi a",
+    user_phone: "0123456790",
+    clinic: "Clinic B",
+    start_time: "2024-04-18 09:00:00",
+    doctor_id: {
+      id: 2,
+      name: "Dr. B",
+      avatarLink: "link_to_avatar_2",
+      expYear: 8,
+      education: "MD"
+    },
+    symptoms: [
+      {
+        id: 2,
+        name: "Fever"
+      },
+      {
+        id: 3,
+        name: "Sick"
+      }
+    ]
   },
   {
-    name: "Laurent Michael",
-    phone: "laurent@simmmple.com",
-    subdomain: "Sick, Throat, Headache",
-    domain: "Fever",
-    status: "Today",
-    date: "07/06/21 07:00:00",
+    id: 3,
+    user_name: "Tran Thi vc",
+    user_phone: "0123456790",
+    clinic: "Clinic B",
+    start_time: "2024-04-13 09:00:00",
+    doctor_id: {
+      id: 2,
+      name: "Dr. B",
+      avatarLink: "link_to_avatar_2",
+      expYear: 8,
+      education: "MD"
+    },
+    symptoms: [
+      {
+        id: 2,
+        name: "Fever"
+      },
+    ]
   },
-  {
-    name: "Freduardo Hill",
-    phone: "freduardo@simmmple.com",
-    subdomain: "Sick, Throat, Headache",
-    domain: "Fever",
-    status: "Today",
-    date: "14/11/21 07:00:00",
-  },
-  {
-    name: "Daniel Thomas",
-    phone: "daniel@simmmple.com",
-    subdomain: "Sick, Throat, Headache",
-    domain: "Fever",
-    status: "Incomming",
-    date: "21/01/21 07:00:00",
-  },
-  {
-    name: "Mark Wilson",
-    phone: "mark@simmmple.com",
-    subdomain: "Sick, Throat, Headache",
-    domain: "/UX Design",
-    status: "Incomming",
-    date: "04/09/20 07:00:00",
-  },
+  
 ];

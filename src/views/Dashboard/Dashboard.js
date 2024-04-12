@@ -31,7 +31,7 @@ import {
   GlobeIcon,
   WalletIcon,
 } from "components/Icons/Icons.js";
-import React from "react";
+import React, { useEffect, useState } from "react";
 // Variables
 import {
   barChartData,
@@ -41,18 +41,42 @@ import {
 } from "variables/charts";
 import { pageVisits, socialTraffic } from "variables/general";
 import Tables from "./Tables";
+import { tablesTableData } from "../../variables/dummyData";
+import moment from "moment";
+const today = moment();
 
 export default function Dashboard() {
   // Chakra Color Mode
   const iconBlue = useColorModeValue("blue.500", "blue.500");
   const iconBoxInside = useColorModeValue("white", "white");
   const textColor = useColorModeValue("gray.700", "white");
-  const tableRowColor = useColorModeValue("#F7FAFC", "navy.900");
-  const borderColor = useColorModeValue("gray.200", "gray.600");
-  const textTableColor = useColorModeValue("gray.500", "white");
 
   const { colorMode } = useColorMode();
+  const [appointmentView, setappointmentView] = useState({
+    total: tablesTableData.length,
+    history: 10,
+    now: 5,
+    incoming: 10
+  })
+  const countAppointment = () => {
+    let history = 0, now = 0, incoming = 0;
 
+    tablesTableData.map(item => {
+      const startTime = moment(item.start_time);
+      if (startTime.isSame(today, 'day')) {
+        now++;
+      } else if (startTime.isBefore(moment(), 'day')) {
+        history++;
+      } else {
+        incoming++;
+      }
+    })
+    setappointmentView((state) => ({ ...state, history, now, incoming }))
+  }
+  useEffect(() => {
+    countAppointment()
+  }, [])
+  
   return (
     <Flex flexDirection="column" pt={{ base: "120px", md: "75px" }}>
       <SimpleGrid columns={{ sm: 1, md: 2, xl: 4 }} spacing="24px" mb="20px">
@@ -70,7 +94,7 @@ export default function Dashboard() {
                 </StatLabel>
                 <Flex>
                   <StatNumber fontSize="lg" color={textColor} fontWeight="bold">
-                    1000
+                    {appointmentView.total}
                   </StatNumber>
                 </Flex>
               </Stat>
@@ -100,7 +124,7 @@ export default function Dashboard() {
                 </StatLabel>
                 <Flex>
                   <StatNumber fontSize="lg" color={textColor} fontWeight="bold">
-                    2
+                    {appointmentView.now}
                   </StatNumber>
                 </Flex>
               </Stat>
@@ -130,7 +154,7 @@ export default function Dashboard() {
                 </StatLabel>
                 <Flex>
                   <StatNumber fontSize="lg" color={textColor} fontWeight="bold">
-                    10
+                    {appointmentView.incoming}
                   </StatNumber>
                 </Flex>
               </Stat>
@@ -160,7 +184,7 @@ export default function Dashboard() {
                 </StatLabel>
                 <Flex>
                   <StatNumber fontSize="lg" color={textColor} fontWeight="bold">
-                    10
+                  {appointmentView.history}
                   </StatNumber>
                 </Flex>
               </Stat>

@@ -13,7 +13,6 @@ import {
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
-import TablesProjectRow from "components/Tables/TablesProjectRow";
 import TablesTableRow from "components/Tables/TablesTableRow";
 import React from "react";
 import { tablesTableData } from "../../variables/dummyData";
@@ -34,27 +33,23 @@ function Tables() {
           <Table variant="simple" color={textColor}>
             <Thead>
               <Tr my=".8rem" pl="0px" color="gray.400" >
+                <Th borderColor={borderColor}>Id</Th>
                 <Th pl="0px" borderColor={borderColor} color="gray.400" >
                   Patient
                 </Th>
                 <Th borderColor={borderColor} color="gray.400" >Symstom</Th>
-                <Th borderColor={borderColor} color="gray.400" >Clinic</Th>
+                <Th borderColor={borderColor} color="gray.400" >Status</Th>
                 <Th borderColor={borderColor} color="gray.400" >Date time</Th>
-                <Th borderColor={borderColor}></Th>
               </Tr>
             </Thead>
             <Tbody>
               {tablesTableData.map((row, index, arr) => {
                 return (
                   <TablesTableRow
-                    name={row.name}
-                    phone={row.phone}
-                    subdomain={row.subdomain}
-                    domain={row.domain}
-                    status={row.status}
-                    date={row.date}
+                    
                     isLast={index === arr.length - 1 ? true : false}
                     key={index}
+                    {...row}
                   />
                 );
               })}
